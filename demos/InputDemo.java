@@ -7,6 +7,7 @@ public class InputDemo
 	
 	public static void main (String[] args)
 	{
+		System.out.println(5 +" HI");
 		if(args.length < 1)
 		{	System.out.println("Error-no input " + args.length);
 			System.exit(1);
