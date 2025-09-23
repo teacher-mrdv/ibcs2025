@@ -19,7 +19,7 @@ public class Den2Bin
 		// the magic goes here...
 		while(temp != 0)
 		{
-			binary = (temp % 2) + binary;
+			binary = (temp % 2) + binary; // prepend instead of append when concatenating the binary digit
 			temp = temp / 2;
 		}
 		System.out.println(denary + " base 10 = " + binary + " base 2");
