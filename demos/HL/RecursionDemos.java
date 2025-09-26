@@ -40,6 +40,7 @@ public class RecursionDemos {
 		countDown(n-1);
 	}
 
+	// trace in class
 	public static void count(int start, int end) {
 		if( start == end+1 ) // so that we do print/process the end
 			return;
@@ -47,6 +48,7 @@ public class RecursionDemos {
 		count(start+1, end);
 	}
 
+	// to trace
 	public static int gcd(int a, int b) {
 		if(b == 0)
 			return a;

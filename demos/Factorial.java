@@ -10,14 +10,15 @@ public class Factorial {
 		// complete this program so that its output is similar to the one
 		// at the end of this source code. Try your program with 5, 10, 15 and 20 for values of n
 		System.out.print(n + "! = ");
+		// descending for loop
 		for(int i = n; i > 0; i--)
 		{	factorial = factorial * i;
 			System.out.print(i);
-			if(i > 1) {
-				System.out.print(" x ");
-			}
-		}
-		System.out.println(" = " + factorial);
+			if(i > 1)
+			{	System.out.print(" x ");
+			} // endif
+		} // next i
+		System.out.println(" = " + factorial); // println to finish a line and move to the next line 
 		input.close();	
 	}
 }
