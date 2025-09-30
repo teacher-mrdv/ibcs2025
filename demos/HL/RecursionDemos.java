@@ -1,6 +1,8 @@
 
 public class RecursionDemos {
 
+	static int counter = 0;
+	
 	// factorial example
 	public static int factorial(int n) {
 		if(n == 0) {
@@ -8,7 +10,7 @@ public class RecursionDemos {
 			return 1;
 		} else {
 			System.out.print(n + " ");
-			if( n > 1) {
+			if(n > 1) {
 				System.out.print("x ");
 			}
 			return n * factorial(n-1);
@@ -17,7 +19,8 @@ public class RecursionDemos {
 
 	// tree recursion
 	public static int fibo(int n) {
-		System.out.println( ">>> " + n );
+		//System.out.println( ">>> " + n );
+		counter++;
 		if(  n == 0 )
 			return 0;
 		else if( n == 1 )
@@ -50,6 +53,7 @@ public class RecursionDemos {
 
 	// to trace
 	public static int gcd(int a, int b) {
+		System.out.println(">>> a = " + a + " b = "+b);
 		if(b == 0)
 			return a;
 		else
@@ -62,7 +66,9 @@ public class RecursionDemos {
 		System.out.println( factorial(4) );
 		
 		System.out.println();
+		counter = 0;
 		System.out.println( "\nTerm 4 of the Fibonacci sequence = " + fibo(4) );
+		System.out.println(counter + " times fibo");
 		System.out.println("\nCount UP to 4:");
 		countUp(4);
 		System.out.println("\nCount DOWN to 4:");
