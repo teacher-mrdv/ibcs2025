@@ -19,6 +19,23 @@ public class RecursionWorksheet1 {
 			return 2 * result(n - 1);
 		}
 	}
+
+public static int f(int k, int n) {
+	if (n == k)
+	   return k;
+	else
+		if (n > k)
+			return f(k, n - k);
+		else
+			return f(k - n, n);
+	}
+
+	public static int mystery(int n, int a, int d) {
+		if (n == 1)
+			return a;
+		else
+			return d + mystery(n - 1, a, d);
+	}
 	
 	public static void main (String[] args) {
 		System.out.println("\nTracing Recursive Algorithms Worksheet #1\nProblem #1");
@@ -29,10 +46,10 @@ public class RecursionWorksheet1 {
 		check( 2, result(5) );
 		
 		System.out.println("\nProblem #3");
-		//check( 3, mystery(3, 2, 6) );
+		check( 3, mystery(3, 2, 6) );
 		
 		System.out.println("\nProblem #4");
-		//	check( 4, f(6, 8) );
+		check( 4, f(6, 8) );
 
 	}
 

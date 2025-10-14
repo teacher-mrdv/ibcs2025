@@ -43,6 +43,13 @@ public class RecursionDemos {
 		countDown(n-1);
 	}
 
+	public static int countUp2(int n) {
+		if( n == 0 )
+			return 1;
+		return countUp2(n-1);
+		//System.out.println(n); // unreachable
+	}
+
 	// trace in class
 	public static void count(int start, int end) {
 		if( start == end+1 ) // so that we do print/process the end
@@ -58,6 +65,16 @@ public class RecursionDemos {
 			return a;
 		else
 			return gcd(b, a % b);
+	}
+
+	public static int sum(int n) {
+		System.out.println( n );
+		if(n == 1) {
+			return 1;
+		} else {
+			return n + sum(n-1);
+			//System.out.println( n ); // unreachable statement because the 
+		}
 	}
 	
 	public static void main (String[] args) {
@@ -77,6 +94,7 @@ public class RecursionDemos {
 		count(1, 4);
 		System.out.println("\nGCD of 1071 and 462 = ");
 		System.out.println( gcd(1071, 462) );
+		System.out.println( sum(3) );
 	}
 }
 
