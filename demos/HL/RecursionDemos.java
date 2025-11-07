@@ -73,9 +73,22 @@ public class RecursionDemos {
 			return 1;
 		} else {
 			return n + sum(n-1);
-			//System.out.println( n ); // unreachable statement because the 
+			//System.out.println( n ); // unreachable statement because the method returns something
 		}
 	}
+
+	public static void fun(int n)
+	{
+		if (n > 0) {
+			System.out.println(" "+ n);
+
+			// Calling once
+			fun(n - 1);
+			System.out.println(">>>"+ n);
+			// Calling twice
+			fun(n - 1);
+		}
+	} 
 	
 	public static void main (String[] args) {
 		System.out.println( "5! = " + factorial(5) );
@@ -95,6 +108,9 @@ public class RecursionDemos {
 		System.out.println("\nGCD of 1071 and 462 = ");
 		System.out.println( gcd(1071, 462) );
 		System.out.println( sum(3) );
+		System.out.println( "\nTree recursion" );
+		fun(2);
+		
 	}
 }
 
