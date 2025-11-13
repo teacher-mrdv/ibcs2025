@@ -6,7 +6,7 @@
  *  https://www.w3schools.com/java/ref_output_printf.asp
  *  https://www.geeksforgeeks.org/java/formatted-output-in-java/
  */
-public class MethodDemo
+public class Methods
 {
 	public static final double GST = 0.09;
 
@@ -40,8 +40,10 @@ public class MethodDemo
 		System.out.println("Price before GST = $" + price );
 		System.out.println(">>> Net Price    = $" +
 			calculateGST(price) );
-		System.out.printf (">>> Net Price    = $%,.2f",
+		System.out.printf (">>> Net Price    = $%,.2f\n",
 			calculateGST(price) );
+		System.out.printf("Price + GST + service tax (10%) = $%,.2f\n" +
+			calculateGST(price, .1));
 	}
 }
 
