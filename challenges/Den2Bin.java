@@ -3,18 +3,22 @@
  * Command line version
  * IB CS 2025 mdv
  */
+import java.util.Scanner;
+
 public class Den2Bin
 {
 	public static void main (String[] args)
 	{
+		int denary;
 		if(args.length < 1)
 		{
-			System.out.println("Error--no input");
-			System.exit(1);
+			Scanner input = new Scanner(System.in);
+			System.out.print("Input a denary integer: ");
+			denary = input.nextInt();
+		} else {
+			denary = Integer.parseInt(args[0]);
 		}
-		// We will assume that the user kindly privided an integer...
-		int denary = Integer.parseInt(args[0]);
-		int temp = denary;
+		int temp = Math.abs(denary);
 		String binary = "";
 		// the magic goes here...
 		while(temp != 0)
