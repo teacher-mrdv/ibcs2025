@@ -112,3 +112,12 @@ SELECT * FROM HBStudent;
 
 -- Now all that is left are the queries:
 
+-- Now all that is left are the queries:
+-- a. Grade 9 and 10 students' full names and grade sorted in descending order by grade.
+
+-- b. Records (all student-related fields, including homebase teacher name and classroom) of all grade 12 students.
+
+-- c. Grade 10 female students' full names, grade, HB teacher and HB classroom, sorted in ascending order by Homebase Teacher Surname.
+
+-- d. Names, gender, and number of male and female students in grade 11. Challenge: do it using only one query!
+
