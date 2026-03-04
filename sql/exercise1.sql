@@ -7,6 +7,7 @@
 .nullvalue NULL
 .headers on
 .mode box
+.width
 
 DROP TABLE IF EXISTS HBStudent;
 DROP TABLE IF EXISTS HBTeacher;
@@ -111,13 +112,35 @@ VALUES
 SELECT * FROM HBStudent;
 
 -- Now all that is left are the queries:
-
--- Now all that is left are the queries:
 -- a. Grade 9 and 10 students' full names and grade sorted in descending order by grade.
+SELECT StudentName, Grade
+FROM HBStudent
+WHERE Grade = 9 OR Grade = 10
+ORDER BY Grade DESC;
 
 -- b. Records (all student-related fields, including homebase teacher name and classroom) of all grade 12 students.
+SELECT HBStudent.*, TeacherName, Classroom
+FROM HBStudent
+INNER JOIN HBTeacher ON HBStudent.TeacherID = HBTeacher.TeacherID
+WHERE Grade = 12
+ORDER BY TeacherName, StudentName;
 
 -- c. Grade 10 female students' full names, grade, HB teacher and HB classroom, sorted in ascending order by Homebase Teacher Surname.
+SELECT StudentName, Grade, TeacherName, Classroom
+FROM HBStudent
+JOIN HBTeacher ON HBStudent.TeacherID = HBTeacher.TeacherID
+WHERE Grade = 10 AND StudentGender LIKE 'F'
+ORDER BY HBTeacher.TeacherName, StudentName;
 
 -- d. Names, gender, and number of male and female students in grade 11. Challenge: do it using only one query!
+SELECT Grade, StudentGender, COUNT(StudentGender)
+FROM HBStudent
+WHERE Grade = 11
+GROUP BY StudentGender;
+
+-- Note the comparison between the above and
+SELECT Grade, StudentGender, StudentName
+FROM HBStudent
+WHERE Grade = 11
+ORDER BY StudentGender;
 
