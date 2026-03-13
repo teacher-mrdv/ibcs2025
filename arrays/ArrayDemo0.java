@@ -4,6 +4,16 @@ public class ArrayDemo0
 {
 	public static final int SUBJECTS = 8;
 
+	public static double average(double[] array)
+	{
+		double total = 0;
+		for(int index = 0; index < array.length; index++)
+		{
+			total = total + array[index];
+		}
+		return total / array.length;
+	}
+	
 	public static void printArray(double[] array)
 	{
 		for(int i = 0; i < array.length; i++)
@@ -27,6 +37,7 @@ public class ArrayDemo0
 		}
 		System.out.println(grades);
 		printArray(grades);
+		System.out.println("Average = " + average(grades) );
 	}
 }
 
