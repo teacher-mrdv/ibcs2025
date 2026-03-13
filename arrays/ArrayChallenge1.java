@@ -3,7 +3,6 @@
  * 
  * Modify the code below to do the following:
  
- * 4. When inputting the grade for your subject, print the subject name
  * 5. Write a method to calculate and return the average grade for all subjects
  * 6. Write a method to return the lowest grade
  * 7. Write a method to return the highest grade
@@ -54,11 +53,11 @@ public class ArrayChallenge1 {
 			subjectNames[index] = input.nextLine();
 		}*/
 		printArray(subjectNames);
-		for(int index = 0; index < subjectNames.length; index++) {
+		/*for(int index = 0; index < MAXSUBJECTS; index++) {
 			System.out.printf("Subject %s Grade: ", subjectNames[index]);
 			double grade = input.nextDouble();
 			grades[index] = grade;
-		}
+		}*/
 		//System.out.println(grades); // outputs something like [D@24d46ca6
 		printArray(grades);
 		//System.out.println("Average = " + average(grades) );
