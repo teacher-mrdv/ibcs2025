@@ -47,19 +47,19 @@ public class ArrayChallenge1 {
 		Scanner input = new Scanner(System.in);
 		//double[] grades = new double[MAXSUBJECTS];
 		//String[] subjectNames = new String[MAXSUBJECTS];
-		double[] grades = { 5.5, 6.6, 7.7, 4.4, 5.2, 6, 4};
+		double[] grades = { 5.5, 6.6, 7.7, 4.4, 5.2, 6.3, 5.4, 4.6 };
 		String[] subjectNames = { "Maths AI HL", "Spanish A LL HL", "Comp Sci HL", "Psych SL", "Digital Soc SL", "Engish A LL SL", "TOK", "PE" };
 		/*for(int index = 0; index < subjectNames.length; index++) {
 			System.out.print("Subject #" + (index+1) + ": ");
 			subjectNames[index] = input.nextLine();
 		}*/
 		printArray(subjectNames);
-		/*for(int index = 0; index < grades.length; index++) {
-			System.out.print("Grade #" + (index+1) + ": ");
+		for(int index = 0; index < subjectNames.length; index++) {
+			System.out.printf("Subject %s Grade: ", subjectNames[index]);
 			double grade = input.nextDouble();
 			grades[index] = grade;
-		}*/
-		System.out.println(grades);
+		}
+		//System.out.println(grades); // outputs something like [D@24d46ca6
 		printArray(grades);
 		//System.out.println("Average = " + average(grades) );
 	}
