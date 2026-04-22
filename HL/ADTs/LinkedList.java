@@ -134,6 +134,19 @@ public class LinkedList {
 		return true;		// successful deletion!
 	}
 	
+	/* Challenge 1:
+	 * Construct a method to insert a new node AFTER
+	 *  the n-th node of a linked list, and add code to test it
+	 *  in the LinkedList class.
+	 */
+	
+	
+	
+	/* Challenge 2:
+	 * Construct a method to insert a new node BEFORE
+	 *  the n-th node of a linked list, and add code to test it
+	 *  in the LinkedList class.
+	 */
 
 
 

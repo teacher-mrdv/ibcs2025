@@ -4,16 +4,14 @@ public class LinkedListTest {
 		
 		LinkedList myList = new LinkedList();
 		myList.traversal();
-		Node item = new Node(3); // we have to create/instantiate a node
+		Node item = new Node(3); // create/instantiate a node using the constructor we coded in Node.java
 		System.out.println( item.getData() );
-		//System.out.println( item.getNext() );
 		myList.append(item);
-		item = new Node(5);			// and initialise its data with 5
-		//System.out.println(myList.head.getData() );
+		item = new Node(5);
 		myList.append(item);
 		myList.traversal();
-		item = new Node(3);		// instantiate and initialise a node
-		myList.append(item);	// using the constructor we coded in Node.java
+		item = new Node(1);
+		myList.append(item);
 		myList.traversal();
 		item = new Node(9);
 		myList.append(item);
