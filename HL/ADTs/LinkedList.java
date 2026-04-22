@@ -8,6 +8,7 @@
 
 public class LinkedList {
 	Node head;
+	int size = 0;
 
 	public boolean isEmpty() {
 		return head == null;
@@ -31,7 +32,7 @@ public class LinkedList {
 			System.out.print(current.getData() + " -> ");
 			current = current.getNext(); // move to the next node
 		}
-		System.out.println("NULL");
+		System.out.println("NULL\t| size = " + size);
 	}
 
 	public void append(Node newNode) {
@@ -44,25 +45,64 @@ public class LinkedList {
 			}
 			current.setNext(newNode);
 		}
+		size++;
 	}
 
-	public void remove(int n) {
-		if( !isEmpty() ) {
+	public boolean remove(int n) {
+		if( isEmpty() ) {
+			System.out.println("Cannot remove from an empty list");
+			return false;
+		} else {
+			// deleting the first node
 			if( head.getData() == n ) {
 				head = head.getNext();
-			} else {
-				Node previous = head;
-				Node current = head.getNext();
-				while( current != null ) {
-					if( current.getData() == n ) {
-						previous.setNext(current.getNext());
-						return;
-					}
-					previous = previous.getNext();
-					current = current.getNext();
+				size--;
+				return true;	// successful deletion!
+			}
+			Node previous = head;
+			Node current = head.getNext();
+			while( current != null ) {
+				if( current.getData() == n ) {
+					previous.setNext(current.getNext());
+					size--;
+					return true;// successful deletion!
 				}
+				previous = previous.getNext();
+				current = current.getNext();
 			}
 		}
+		return false;	// n was not found and therefore not removed
+	}
+
+	/*
+	 * Overload the remove method so that it removes the Nth
+	 * node from the linked list.
+	 */
+	public boolean removeNth(int nth) {
+		if( isEmpty() ) {
+			System.out.println("Cannot remove from an empty list");
+			return false;
+		}
+		if( nth < 1 || nth > size ) {
+			System.out.println("Nth is out of range (1~size)");
+			return false;
+		}
+		if( nth == 1 ) {
+			head = head.getNext();
+			size--;
+			return true;	// successful deletion!
+		}
+		Node previous = head;
+		Node current = head.getNext();
+		int counter = 1;
+		while( counter < nth-1 ) {
+			previous = previous.getNext();
+			current = current.getNext();
+			counter++;
+		}
+		previous.setNext(current.getNext());
+		size--;
+		return true;		// successful deletion!
 	}
 
 	public static void main(String[] args) {
@@ -89,6 +129,21 @@ public class LinkedList {
 		myList.traversal();
 		myList.append(new Node(0));
 		myList.traversal();
+		/*
+		myList.remove(3);
+		myList.traversal();
+		myList.remove(0);
+		myList.traversal();
+		myList.remove(7);
+		myList.traversal();
+		*/
+		myList.removeNth(5);
+		myList.traversal();
+		myList.removeNth(1);
+		myList.traversal();
+		myList.removeNth(myList.size);
+		myList.traversal();
+		
 	}
 }
 
