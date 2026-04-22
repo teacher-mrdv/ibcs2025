@@ -112,14 +112,18 @@ public class LinkedList {
 			System.out.println("Nth is out of range (1~size)");
 			return false;
 		}
+		// delete the first node, the head
 		if( nth == 1 ) {
 			head = head.getNext();
 			size--;
 			return true;	// successful deletion!
 		}
+		// delete any other node in the list that is NOT the 1st/head
 		Node previous = head;
 		Node current = head.getNext();
 		int counter = 1;
+		// the counter has to stop at the penultimate node
+		// so that current doesn't go past the end of the LL/null 
 		while( counter < nth-1 ) {
 			previous = previous.getNext();
 			current = current.getNext();
