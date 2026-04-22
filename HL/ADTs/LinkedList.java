@@ -28,8 +28,8 @@ public class LinkedList {
 		Node current = head;	// start at the head
 		System.out.print("head -> ");
 		while( current != null ) {
-			System.out.print(current.data + " -> ");
-			current = current.next; // move to the next node
+			System.out.print(current.getData() + " -> ");
+			current = current.getNext(); // move to the next node
 		}
 		System.out.println("NULL");
 	}
@@ -39,17 +39,41 @@ public class LinkedList {
 			head = newNode;
 		} else {
 			Node current = head;
-			while( current.next != null ) {
-				current = current.next;
+			while( current.getNext() != null ) {
+				current = current.getNext();
 			}
-			current.next = newNode;
+			current.setNext(newNode);
+		}
+	}
+
+	public void remove(int n) {
+		if( !isEmpty() ) {
+			if( head.getData() == n ) {
+				head = head.getNext();
+			} else {
+				Node previous = head;
+				Node current = head.getNext();
+				while( current != null ) {
+					if( current.getData() == n ) {
+						previous.setNext(current.getNext());
+						return;
+					}
+					previous = previous.getNext();
+					current = current.getNext();
+				}
+			}
 		}
 	}
 
 	public static void main(String[] args) {
 		LinkedList myList = new LinkedList();
-		Node item = new Node(); // we have to create/instantiate a node
-		item.data = 5;			// and initialise its data with 5
+		myList.traversal();
+		Node item = new Node(3); // we have to create/instantiate a node
+		System.out.println( item.getData() );
+		//System.out.println( item.getNext() );
+		myList.append(item);
+		item = new Node(5);			// and initialise its data with 5
+		//System.out.println(myList.head.getData() );
 		myList.append(item);
 		myList.traversal();
 		item = new Node(3);		// instantiate and initialise a node
@@ -60,6 +84,10 @@ public class LinkedList {
 		myList.traversal();
 		item = new Node(7);
 		myList.append(item);
+		myList.traversal();
+		myList.append(new Node(2));
+		myList.traversal();
+		myList.append(new Node(0));
 		myList.traversal();
 	}
 }
