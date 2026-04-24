@@ -12,6 +12,10 @@ public class AnimalTest {
 		System.out.println( goldie.getYearOfBirth() );
 		System.out.println(goldie);
 		System.out.println(goldie.getName() + " is " + goldie.getAge());
+		Animal woof = new Animal("Fido", 2020);
+		System.out.println(woof);
+
 	}
+
 }
 
