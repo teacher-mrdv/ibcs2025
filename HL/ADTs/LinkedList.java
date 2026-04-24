@@ -1,13 +1,15 @@
 /*
- * LinkedList.java
- * This class defines the content and structure
- * of a linked list
+ * LinkedList.java			note:	LL=linked list
+ * This class defines the content and structure of a linked list
+ * We haven't encapsulated/hidden its data yet the way we did it with the Node class - WIP
  * 
  */
 
 
 public class LinkedList {
+	// point of access to the linked list: HEAD attribute
 	Node head;
+	// attribute to keep track of the SIZE (number of nodes) of the linked list
 	int size = 0;
 
 	public boolean isEmpty() {
@@ -21,6 +23,7 @@ public class LinkedList {
 		*/
 	}
 
+	// visit/go through each node and print its data
 	public void traversal() { // AKA "printLinkedList" 
 		/* this is redundant, but part of our thinking process
 		if( isEmpty() ) {
@@ -34,20 +37,38 @@ public class LinkedList {
 		}
 		System.out.println("NULL\t| size = " + size);
 	}
+	
+	// prints a visual representation of the linked list (same as traversal)
+	public void printLinkedList() {
+		Node current = head;	// start at the head
+		System.out.print("head -> ");
+		// process/traverse/iterate over each and every node
+		while( current != null ) {
+			System.out.print(current.getData() + " -> ");
+			current = current.getNext(); // move to the next node
+		}
+		System.out.println("NULL\t| size = " + size);
+	}
 
+	// add a (new) node to the end of the linked list
 	public void append(Node newNode) {
+		// if the LL is empty, the new node becomes its head (start)
 		if( isEmpty() ) {
 			head = newNode;
 		} else {
+			// traverse the LL until we get to the last node...
 			Node current = head;
 			while( current.getNext() != null ) {
 				current = current.getNext();
 			}
+			// ...then link the last node to the new node 
 			current.setNext(newNode);
 		}
 		size++;
 	}
 
+	// search for a node with the value <n> and remove/delete from the linked list
+	// the boolean return type is optional, this method could also be void
 	public boolean remove(int n) {
 		if( isEmpty() ) {
 			System.out.println("Cannot remove from an empty list");
@@ -57,6 +78,7 @@ public class LinkedList {
 			if( head.getData() == n ) {
 				head = head.getNext();
 				size--;
+				System.out.println(n + " was removed from the list");
 				return true;	// successful deletion!
 			}
 			Node previous = head;
@@ -65,8 +87,10 @@ public class LinkedList {
 				if( current.getData() == n ) {
 					previous.setNext(current.getNext());
 					size--;
+					System.out.println(n + " was removed from the list");
 					return true;// successful deletion!
 				}
+				// bypass/bridge
 				previous = previous.getNext();
 				current = current.getNext();
 			}
@@ -74,10 +98,11 @@ public class LinkedList {
 		return false;	// n was not found and therefore not removed
 	}
 
-	/*
-	 * Overload the remove method so that it removes the Nth
-	 * node from the linked list.
-	 */
+	/* Challenge 0:
+	 * removes the n-th element from the linked list.
+	 * I assume the first element of the list to be 1, but...
+	 * ...you may change the code if you prefer it to be 0
+	 **/
 	public boolean removeNth(int nth) {
 		if( isEmpty() ) {
 			System.out.println("Cannot remove from an empty list");
@@ -87,14 +112,18 @@ public class LinkedList {
 			System.out.println("Nth is out of range (1~size)");
 			return false;
 		}
+		// delete the first node, the head
 		if( nth == 1 ) {
 			head = head.getNext();
 			size--;
 			return true;	// successful deletion!
 		}
+		// delete any other node in the list that is NOT the 1st/head
 		Node previous = head;
 		Node current = head.getNext();
 		int counter = 1;
+		// the counter has to stop at the penultimate node
+		// so that current doesn't go past the end of the LL/null 
 		while( counter < nth-1 ) {
 			previous = previous.getNext();
 			current = current.getNext();
@@ -104,46 +133,22 @@ public class LinkedList {
 		size--;
 		return true;		// successful deletion!
 	}
+	
+	/* Challenge 1:
+	 * Construct a method to insert a new node AFTER
+	 *  the n-th node of a linked list, and add code to test it
+	 *  in the LinkedList class.
+	 */
+	
+	
+	
+	/* Challenge 2:
+	 * Construct a method to insert a new node BEFORE
+	 *  the n-th node of a linked list, and add code to test it
+	 *  in the LinkedList class.
+	 */
 
-	public static void main(String[] args) {
-		LinkedList myList = new LinkedList();
-		myList.traversal();
-		Node item = new Node(3); // we have to create/instantiate a node
-		System.out.println( item.getData() );
-		//System.out.println( item.getNext() );
-		myList.append(item);
-		item = new Node(5);			// and initialise its data with 5
-		//System.out.println(myList.head.getData() );
-		myList.append(item);
-		myList.traversal();
-		item = new Node(3);		// instantiate and initialise a node
-		myList.append(item);	// using the constructor we coded in Node.java
-		myList.traversal();
-		item = new Node(9);
-		myList.append(item);
-		myList.traversal();
-		item = new Node(7);
-		myList.append(item);
-		myList.traversal();
-		myList.append(new Node(2));
-		myList.traversal();
-		myList.append(new Node(0));
-		myList.traversal();
-		/*
-		myList.remove(3);
-		myList.traversal();
-		myList.remove(0);
-		myList.traversal();
-		myList.remove(7);
-		myList.traversal();
-		*/
-		myList.removeNth(5);
-		myList.traversal();
-		myList.removeNth(1);
-		myList.traversal();
-		myList.removeNth(myList.size);
-		myList.traversal();
-		
-	}
+
+
 }
 
