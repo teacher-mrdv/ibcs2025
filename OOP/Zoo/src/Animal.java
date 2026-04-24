@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.util.Date;	// note this is DEPENDENCY
 
 public class Animal {
 	
@@ -41,12 +41,14 @@ public class Animal {
 	}
 
 	public String toString() {
-		String output = "Name: " + name +
+		String output = "[ " + this.getClass().getName() + " ]\t" +
+						"Name: " + name +
 						"\tYear of birth: " + yearOfBirth;
 		return output;
 	}
 
-	public int getAge() {
+	// calculates the current age of the animal
+	public int calculateAge() {
 		Date today = new Date(); // current date
 		int currentYear = 1900 + today.getYear();
 		return currentYear - yearOfBirth;
