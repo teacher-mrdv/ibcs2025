@@ -19,6 +19,31 @@ public class LinkedListTest {
 		item = new Node(9);
 		myList.append(item); myList.printLinkedList();
 		item = new Node(7);
+
+		myList.append(item);
+		myList.traversal();
+		myList.append(new Node(2));
+		myList.traversal();
+		myList.append(new Node(0));
+		myList.traversal();
+		
+		LinkedList yourList = new LinkedList();
+		yourList.clone(myList);
+		 
+		myList.remove(3);
+		myList.traversal();
+		myList.remove(0);
+		myList.traversal();
+		myList.remove(7);
+		myList.traversal();
+		
+		yourList.removeNth(5);
+		yourList.traversal();
+		yourList.removeNth(1);
+		yourList.traversal();
+		yourList.removeNth(myList.size);
+		yourList.traversal();
+		
 		myList.append(item); myList.printLinkedList();
 		myList.append(new Node(2)); myList.printLinkedList();
 		myList.append(new Node(0)); myList.printLinkedList();
@@ -45,6 +70,7 @@ public class LinkedListTest {
 		 * construct code here to restore the items we deleted from
 		 * myList and yourList.
 		 */
+
 		System.out.println();
 		Node restore = new Node(3);
 		myList.insertBefore(restore, 1);
@@ -66,6 +92,7 @@ public class LinkedListTest {
 		restore = new Node(0);
 		yourList.insertAfter(restore, 6);
 		System.out.println("yourList.insertAfter(restore, 6);\n" + yourList);
+
 	}
 	
 }
