@@ -2,7 +2,7 @@
  * LinkedList.java			note:	LL=linked list
  * This class defines the content and structure of a linked list
  * Now fully encapsulated (+data hiding)
- * 
+ * 5.May.26
  */
 
 
