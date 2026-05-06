@@ -3,20 +3,18 @@ public class LinkedListTest {
 	public static void main(String[] args) {
 		
 		LinkedList myList = new LinkedList();
-		myList.traversal();
+		myList.printLinkedList();
 		Node item = new Node(3); // create/instantiate a node using the constructor we coded in Node.java
 		System.out.println( "Node item: item.data = " + item.getData() + "; item.next = " + item.getNext() );
 		myList.append(item);
 		item = new Node(5);
-		myList.append(item);
-		myList.traversal();
+		myList.append(item); myList.printLinkedList();
 		item = new Node(1);
-		myList.append(item);
-		myList.traversal();
+		myList.append(item); myList.printLinkedList();
 		item = new Node(9);
-		myList.append(item);
-		myList.traversal();
+		myList.append(item); myList.printLinkedList();
 		item = new Node(7);
+
 		myList.append(item);
 		myList.traversal();
 		myList.append(new Node(2));
@@ -41,28 +39,61 @@ public class LinkedListTest {
 		yourList.removeNth(myList.size);
 		yourList.traversal();
 		
+		myList.append(item); myList.printLinkedList();
+		myList.append(new Node(2)); myList.printLinkedList();
+		myList.append(new Node(0)); myList.printLinkedList();
+
+		// clone (make a copy of the original list)
+		LinkedList yourList = myList.clone();
+
+		System.out.println("\nremoving 3, 0, 7:");
+		myList.remove(3);	myList.printLinkedList();
+		myList.remove(0); myList.printLinkedList();
+		myList.remove(7); myList.printLinkedList();
+
+		System.out.println("\nyourlist (cloned): ");
+		yourList.printLinkedList();
+		System.out.println("removing 5th, 1st, and last nodes:");
+		yourList.removeNth(5);
+		yourList.printLinkedList();
+		yourList.removeNth(1);
+		yourList.printLinkedList();
+		yourList.removeNth(yourList.getSize());
+		yourList.printLinkedList();
+		
 		/* using the insertBefore and insertAfter methods,
 		 * construct code here to restore the items we deleted from
 		 * myList and yourList.
 		 */
-		
+
+		System.out.println();
+		Node restore = new Node(3);
+		myList.insertBefore(restore, 1);
+		System.out.println("myList.insertBefore(restore, 1);\n" + myList);
+		restore = new Node(7);
+		myList.insertBefore(restore, 5);
+		System.out.println("myList.insertBefore(restore, 5);\n" + myList);
+		restore = new Node(0);
+		myList.insertAfter(restore, 6);
+		System.out.println("myList.insertAfter(restore, 6);\n" + myList);
+
+		System.out.println();
+		restore = new Node(3);
+		yourList.insertBefore(restore, 1);
+		System.out.println("yourList.insertBefore(restore, 1);\n" + yourList);
+		restore = new Node(7);
+		yourList.insertAfter(restore, 4);
+		System.out.println("yourList.insertAfter(restore, 4);\n" + yourList);
+		restore = new Node(0);
+		yourList.insertAfter(restore, 6);
+		System.out.println("yourList.insertAfter(restore, 6);\n" + yourList);
+
 	}
 	
 }
 
-/* OUTPUT (so far)
-3
-head -> 3 -> 5 -> NULL  | size = 2
-head -> 3 -> 5 -> 1 -> NULL     | size = 3
-head -> 3 -> 5 -> 1 -> 9 -> NULL        | size = 4
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> NULL   | size = 5
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL      | size = 6
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL | size = 7
-3 was removed from the list
-head -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL      | size = 6
-0 was removed from the list
-head -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL   | size = 5
-7 was removed from the list
-head -> 5 -> 1 -> 9 -> 2 -> NULL        | size = 4
+/* OUTPUT
+
+
 
 */
