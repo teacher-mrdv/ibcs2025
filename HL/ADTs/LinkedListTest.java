@@ -23,7 +23,7 @@ public class LinkedListTest {
 		myList.traversal();
 		
 		LinkedList yourList = new LinkedList();
-		yourList.clone(myList);
+		yourList = myList.clone();
 		 
 		myList.remove(3);
 		myList.traversal();
@@ -36,15 +36,12 @@ public class LinkedListTest {
 		yourList.traversal();
 		yourList.removeNth(1);
 		yourList.traversal();
-		yourList.removeNth(myList.size);
+		yourList.removeNth(myList.size());
 		yourList.traversal();
 		
 		myList.append(item); myList.printLinkedList();
 		myList.append(new Node(2)); myList.printLinkedList();
 		myList.append(new Node(0)); myList.printLinkedList();
-
-		// clone (make a copy of the original list)
-		LinkedList yourList = myList.clone();
 
 		System.out.println("\nremoving 3, 0, 7:");
 		myList.remove(3);	myList.printLinkedList();
