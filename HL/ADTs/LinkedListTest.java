@@ -29,33 +29,15 @@ public class LinkedListTest {
 		
 		LinkedList yourList = new LinkedList();
 		yourList = myList.clone();
-		 
-		myList.remove(3);
-		myList.traversal();
-		myList.remove(0);
-		myList.traversal();
-		myList.remove(7);
-		myList.traversal();
-		
-		yourList.removeNth(5);
-		yourList.traversal();
-		yourList.removeNth(1);
-		yourList.traversal();
-		yourList.removeNth(myList.size());
-		yourList.traversal();
-		
-		myList.append(item); myList.printLinkedList();
-		myList.append(new Node(2)); myList.printLinkedList();
-		myList.append(new Node(0)); myList.printLinkedList();
 
-		System.out.println("\nremoving 3, 0, 7:");
-		myList.remove(3);	myList.printLinkedList();
+		System.out.println("\nremoving 3, 0, 7 from myList:");
+		myList.remove(3); myList.printLinkedList();
 		myList.remove(0); myList.printLinkedList();
 		myList.remove(7); myList.printLinkedList();
 
 		System.out.println("\nyourlist (cloned): ");
 		yourList.printLinkedList();
-		System.out.println("removing 5th, 1st, and last nodes:");
+		System.out.println("removing 5th, 1st, and last nodes from yourList:");
 		yourList.removeNth(5);
 		yourList.printLinkedList();
 		yourList.removeNth(1);
@@ -96,42 +78,42 @@ public class LinkedListTest {
 
 /* OUTPUT (expected)
 
-head -> NULL	| size = 0
+head -> NULL    | size = 0
 Node item: item.data = 3; item.next = null
-head -> 3 -> 5 -> NULL	| size = 2
-head -> 3 -> 5 -> 1 -> NULL	| size = 3
-head -> 3 -> 5 -> 1 -> 9 -> NULL	| size = 4
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> NULL	| size = 5
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL	| size = 6
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL	| size = 7
+head -> 3 -> 5 -> NULL  | size = 2
+head -> 3 -> 5 -> 1 -> NULL     | size = 3
+head -> 3 -> 5 -> 1 -> 9 -> NULL        | size = 4
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> NULL   | size = 5
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL      | size = 6
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL | size = 7
 
-removing 3, 0, 7:
+removing 3, 0, 7 from myList:
 3 was removed from the list
-head -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL	| size = 6
+head -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL      | size = 6
 0 was removed from the list
-head -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL	| size = 5
+head -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL   | size = 5
 7 was removed from the list
-head -> 5 -> 1 -> 9 -> 2 -> NULL	| size = 4
+head -> 5 -> 1 -> 9 -> 2 -> NULL        | size = 4
 
-yourlist (cloned): 
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL	| size = 7
-removing 5th, 1st, and last nodes:
-head -> 3 -> 5 -> 1 -> 9 -> 2 -> 0 -> NULL	| size = 6
-head -> 5 -> 1 -> 9 -> 2 -> 0 -> NULL	| size = 5
-head -> 5 -> 1 -> 9 -> 2 -> NULL	| size = 4
+yourlist (cloned):
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL | size = 7
+removing 5th, 1st, and last nodes from yourList:
+head -> 3 -> 5 -> 1 -> 9 -> 2 -> 0 -> NULL      | size = 6
+head -> 5 -> 1 -> 9 -> 2 -> 0 -> NULL   | size = 5
+head -> 5 -> 1 -> 9 -> 2 -> NULL        | size = 4
 
 myList.insertBefore(restore, 1);
-head -> 3 -> 5 -> 1 -> 9 -> 2 -> NULL	| size = 5
+head -> 3 -> 5 -> 1 -> 9 -> 2 -> NULL   | size = 5
 myList.insertBefore(restore, 5);
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL	| size = 6
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL      | size = 6
 myList.insertAfter(restore, 6);
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL	| size = 7
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL | size = 7
 
 yourList.insertBefore(restore, 1);
-head -> 3 -> 5 -> 1 -> 9 -> 2 -> NULL	| size = 5
+head -> 3 -> 5 -> 1 -> 9 -> 2 -> NULL   | size = 5
 yourList.insertAfter(restore, 4);
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL	| size = 6
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> NULL      | size = 6
 yourList.insertAfter(restore, 6);
-head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL	| size = 7
+head -> 3 -> 5 -> 1 -> 9 -> 7 -> 2 -> 0 -> NULL | size = 7
 
 */
