@@ -1,7 +1,10 @@
 /*
  * LinkedList.java			note:	LL=linked list
  * This class defines the content and structure of a linked list
- * We haven't encapsulated/hidden its data yet the way we did it with the Node class - WIP
+ * We haven't encapsulated/hidden its data (attributes, head and size) yet...
+ *  ...the way we did it with the Node class
+ * 
+ * -> do this first this week (27/04/26)
  * 
  */
 
@@ -135,6 +138,15 @@ public class LinkedList {
 	}
 	
 	/* Challenge 1:
+	 * Construct a method to clone (copy) a linked list to a new LL
+	 * Just like we did with arrays, you will need to create a new LL,
+	 *  and copy one node at a time.
+	 */
+	public LinkedList clone(LinkedList original) {
+		return null; // change this line and add your code here
+	}
+	
+	/* Challenge 2:
 	 * Construct a method to insert a new node AFTER
 	 *  the n-th node of a linked list, and add code to test it
 	 *  in the LinkedList class.
@@ -142,7 +154,7 @@ public class LinkedList {
 	
 	
 	
-	/* Challenge 2:
+	/* Challenge 3:
 	 * Construct a method to insert a new node BEFORE
 	 *  the n-th node of a linked list, and add code to test it
 	 *  in the LinkedList class.
