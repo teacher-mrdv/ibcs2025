@@ -72,6 +72,16 @@ public class LinkedListTest {
 		yourList.insertAfter(restore, 6);
 		System.out.println("yourList.insertAfter(restore, 6);\n" + yourList);
 
+		System.out.println("yourList.search(12) = " + yourList.search(12) );
+		System.out.println("yourList.search(3) = " + yourList.search(3) );
+		System.out.println("yourList.search(1) = " + yourList.search(1) );
+		System.out.println("yourList.search(0) = " + yourList.search(0) );
+
+		System.out.println("yourList.searchPlace(12) = " + yourList.searchPlace(12) );
+		System.out.println("yourList.searchPlace(3) = " + yourList.searchPlace(3) );
+		System.out.println("yourList.searchPlace(1) = " + yourList.searchPlace(1) );
+		System.out.println("yourList.searchPlace(0) = " + yourList.searchPlace(0) );
+
 	}
 	
 }

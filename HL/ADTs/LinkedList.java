@@ -254,6 +254,29 @@ public class LinkedList {
 		return output;
 	}
 
+	public boolean search(int key) {
+		Node current = head;	// start at the head
+		while( current != null ) {
+			if( current.getData() == key ) {
+				return true;
+			}
+			current = current.getNext(); // move to the next node
+		}
+		return false;
+	}
+
+	public int searchPlace(int key) {
+		Node current = head;	// start at the head
+		int place = 1;
+		while( current != null ) {
+			if( current.getData() == key ) {
+				return place;
+			}
+			current = current.getNext(); // move to the next node
+			place = place + 1;
+		}
+		return -1;
+	}
 
 }
 
