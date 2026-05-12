@@ -254,8 +254,12 @@ public class LinkedList {
 		return output;
 	}
 
+	/* linear search for a value (key) in the LL
+	 * returns TRUE if the key is in the LL,
+	 * FALSE otherwise.
+	 */
 	public boolean search(int key) {
-		Node current = head;	// start at the head
+		Node current = head;			// start at the head
 		while( current != null ) {
 			if( current.getData() == key ) {
 				return true;
@@ -265,8 +269,13 @@ public class LinkedList {
 		return false;
 	}
 
+	/* linear search for a value (key) in the LL
+	 * returns the place (nth) of the key
+	 * if it is in the LL, -1 otherwise.
+	 * this method checks for the first occurrence only
+	 */
 	public int searchPlace(int key) {
-		Node current = head;	// start at the head
+		Node current = head;			// start at the head
 		int place = 1;
 		while( current != null ) {
 			if( current.getData() == key ) {
