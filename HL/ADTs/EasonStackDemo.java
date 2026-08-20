@@ -48,6 +48,14 @@ class StringStack {
 
 		return this.data[end - 1];
 	}
+
+	public void printStack() {
+		System.out.println("=== TOP ===");
+		for (int i = end-1; i >= 0; i--) {
+			System.out.println(this.data[i]);
+		}
+		System.out.println("=== BOT ===");
+	}
 }
 
 // --- end stack definition ---
@@ -62,6 +70,8 @@ public class EasonStackDemo {
 		stack.push("Banana");
 		stack.push("Grape");
 		stack.push("Orange");
+
+		stack.printStack();
 
 		int count = stack.size();
 		for (int i = 0; i < count; i++) {
