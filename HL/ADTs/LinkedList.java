@@ -1,290 +1,147 @@
 /*
- * LinkedList.java			note:	LL=linked list
- * This class defines the content and structure of a linked list
- * Now fully encapsulated (+data hiding)
- * 5.May.26
+ * Linked list
  */
 
-
-public class LinkedList {
-	// point of access to the linked list: HEAD attribute
-	private Node head;
-	// attribute to keep track of the SIZE (number of nodes) of the linked list
-	private int size = 0;
-
-	// custom constructor (it takes a parameter)
-	// Creates a linked list with a head (1 node)
-	public LinkedList(Node head) {
-		this.head = head;
-		size = 1;
-	}
-
-	// empty constructor (instantiates an EMPTY linked list
-	public LinkedList() {
-		head = null;
-		size = 0;
-	}
+public class LinkedList
+{
+	Node start;
 	
-	public Node getHead() {
-		return head;
-	}
-
-	public int getSize() {
-		return size;
-	}
-
-	public int size() {
-		return size;
-	}
-
-	public boolean isEmpty() {
-		return head == null;
-		/*
-			if(head == null) {
-				return true;
-			} else {
-				return false;
-			}
-		*/
-	}
-
-	// visit/go through each node and print its data
-	public void traversal() { // AKA "printLinkedList" 
-		/* this is redundant, but part of our thinking process
-		if( isEmpty() ) {
-			return; // exit if the ll is empty
-		} */
-		Node current = head;	// start at the head
-		System.out.print("head -> ");
-		while( current != null ) {
-			System.out.print(current.getData() + " -> ");
-			current = current.getNext(); // move to the next node
+	public boolean isEmpty()
+	{
+		if(start == null)
+		{	return true;
+		} else
+		{	return false;
 		}
-		System.out.println("NULL\t| size = " + size);
-	}
-	
-	// prints a visual representation of the linked list (same as traversal)
-	public void printLinkedList() {
-		Node current = head;	// start at the head
-		System.out.print("head -> ");
-		// process/traverse/iterate over each and every node
-		while( current != null ) {
-			System.out.print(current.getData() + " -> ");
-			current = current.getNext(); // move to the next node
-		}
-		System.out.println("NULL\t| size = " + size);
+		//return start == null;
 	}
 
-	// add a (new) node to the end of the linked list
-	public void append(Node newNode) {
-		// if the LL is empty, the new node becomes its head (start)
-		if( isEmpty() ) {
-			head = newNode;
-		} else {
-			// traverse the LL until we get to the last node...
-			Node current = head;
-			while( current.getNext() != null ) {
-				current = current.getNext();
-			}
-			// ...then link the last node to the new node 
-			current.setNext(newNode);
-		}
-		size++;
-	}
-
-	// search for a node with the value <n> and remove/delete from the linked list
-	// the boolean return type is optional, this method could also be void
-	public boolean remove(int n) {
-		if( isEmpty() ) {
-			System.out.println("Cannot remove from an empty list");
-			return false;
-		} else {
-			// deleting the first node
-			if( head.getData() == n ) {
-				head = head.getNext();
-				size--;
-				System.out.println(n + " was removed from the list");
-				return true;	// successful deletion!
-			}
-			Node previous = head;
-			Node current = head.getNext();
-			while( current != null ) {
-				if( current.getData() == n ) {
-					previous.setNext(current.getNext());
-					size--;
-					System.out.println(n + " was removed from the list");
-					return true;// successful deletion!
-				}
-				// bypass/bridge
-				previous = previous.getNext();
-				current = current.getNext();
-			}
-		}
-		return false;	// n was not found and therefore not removed
-	}
-
-	/* Challenge 0:
-	 * removes the n-th element from the linked list.
-	 * I assume the first element of the list to be 1, but...
-	 * ...you may change the code if you prefer it to be 0
-	 **/
-	public boolean removeNth(int nth) {
-		if( isEmpty() ) {
-			System.out.println("Cannot remove from an empty list");
-			return false;
-		}
-		if( nth < 1 || nth > size ) {
-			System.out.println("Nth is out of range (1~size)");
-			return false;
-		}
-		// delete the first node, the head
-		if( nth == 1 ) {
-			head = head.getNext();
-			size--;
-			return true;	// successful deletion!
-		}
-		// delete any other node in the list that is NOT the 1st/head
-		Node previous = head;
-		Node current = head.getNext();
-		int counter = 1;
-		// the counter has to stop at the penultimate node
-		// so that current doesn't go past the end of the LL/null 
-		while( counter < nth-1 ) {
-			previous = previous.getNext();
-			current = current.getNext();
-			counter++;
-		}
-		previous.setNext(current.getNext());
-		size--;
-		return true;		// successful deletion!
-	}
-
-	/* Challenge 1:
-     * Construct a method to clone (copy) a linked list to a new LL
-     * Just like we did with arrays, you will need to create a new LL,
-     *  and copy one node at a time.
-     */
-    public LinkedList clone() {
-        LinkedList newList = new LinkedList(); // Always create the object
-
-        if (!this.isEmpty()) {
-            Node current = this.getHead();
-            while (current != null) {
-                // Create a new node with the same data
-                Node newNode = new Node(current.getData());
-                // Add it to the new list
-                newList.append(newNode);
-                // move to next node
-                current = current.getNext();
-            }
-        }
-        return newList;
-    }
-	
-	/* Challenge 2:
-	 * Construct a method to insert a new node AFTER
-	 *  the n-th node of a linked list (place), and
-	 *  add code to test itn the LinkedList class.
-	 */
-	public void insertAfter(Node insert, int place) {
-		if(place < 1 || place > this.size()) {
-			System.out.println("ERROR - insertAfter " + place + " out of bounds!");
+	public void append(Node newNode)
+	{
+		if( isEmpty() )
+		{	start = newNode;
 			return;
 		}
-		if( place == 1 ) {
-			insert.setNext( head.getNext() );
-			head.setNext(insert);
-			size++;
-		} else {
-			int counter = 1;
-			Node temp = this.head;
-			while(counter < place) {
-				temp = temp.getNext();
-				counter++;
-			}
-			insert.setNext(temp.getNext());
-			temp.setNext(insert);
-			size++;
+		Node temp = start;
+		while(temp.next != null)
+		{	temp = temp.next;
 		}
+		temp.next = newNode;
 	}
 
-	
-	/* Challenge 3:
-	 * Construct a method to insert a new node BEFORE
-	 *  the n-th node of a linked list (place), and
-	 *  add code to test it in the LinkedList class.
-	 */
-	public void insertBefore(Node insert, int place)
-	{	if(place < 1 || place > this.size()) {
-			System.out.println("ERROR - insertBefore " + place + " out of bounds!");
-			return;
+	public boolean remove(int delete)
+	{	if( isEmpty() )
+		{	return false;
 		}
-		if(place == 1) {
-			insert.setNext(head);
-			head = insert;
-			size++;
-			return;
+		if( delete == start.data )
+		{	start = start.next;
+			return true;
 		}
-		int counter = 1;
-		Node temp = head;
-		while(counter < place-1) {
-			temp = temp.getNext();
-			counter++;
+		Node previous= start;
+		Node current = start.next;
+		// checking for null is important!
+		while( current.next != null && current.data != delete )
+		{	previous = previous.next;
+			current  = current.next;
 		}
-		insert.setNext(temp.getNext());
-		temp.setNext(insert);
-		size++;
-	}
-
-	/* returns a String representation of the LL.
-	 * Similar to printLinkedList(), but returns a String
-	 * rather than printing it directly to the screen.
-	 * This method is called by System.out.print/println(),
-	 * allowing us to "print" a LL directly.
-	 */
-	public String toString() {
-		Node current = head;	// start at the head
-		String output = "head -> ";
-		// process/traverse/iterate over each and every node
-		while( current != null ) {
-			output = output + current.getData() + " -> ";
-			current = current.getNext(); // move to the next node
-		}
-		output += "NULL\t| size = " + size;
-		return output;
-	}
-
-	/* linear search for a value (key) in the LL
-	 * returns TRUE if the key is in the LL,
-	 * FALSE otherwise.
-	 */
-	public boolean search(int key) {
-		Node current = head;			// start at the head
-		while( current != null ) {
-			if( current.getData() == key ) {
-				return true;
-			}
-			current = current.getNext(); // move to the next node
+		if( current.data == delete)
+		{	previous.next = current.next;
+			return true;
 		}
 		return false;
 	}
 
-	/* linear search for a value (key) in the LL
-	 * returns the place (nth) of the key
-	 * if it is in the LL, -1 otherwise.
-	 * this method checks for the first occurrence only
-	 */
-	public int searchPlace(int key) {
-		Node current = head;			// start at the head
-		int place = 1;
-		while( current != null ) {
-			if( current.getData() == key ) {
-				return place;
-			}
-			current = current.getNext(); // move to the next node
-			place = place + 1;
+	public int removeAt(int place)
+	{
+		if (isEmpty())
+        {	System.out.println("Error-linked list is empty");
+            return 0;
+        }
+        if( place < 1 || place > size() )
+        {	System.out.println("Error-place out of bounds");
+            return 0;
 		}
-		return -1;
+		Node temp = start;
+        int counter = 1;
+        int delData = 0;
+        if( place == 1 )
+        {	delData = start.data;
+            start = start.next;
+            return delData;
+        }
+        while(counter < place-1)
+        {	temp = temp.next;
+			counter++;
+        }
+        Node nodeToDelete = temp.next;
+        delData = nodeToDelete.data;
+        temp.next = nodeToDelete.next;
+        return delData;
+	}
+
+	// insert BEFORE place
+	public void insertBefore(Node insert, int place)
+	{	if(place < 1 || place > size())
+		{	System.out.println("ERROR - Insertion place out of bounds!");
+			return;
+		}
+		if(place == 1)
+		{	insert.next = start;
+			start = insert;
+			return;
+		}
+		int counter = 1;
+		Node temp = start;
+		while(counter < place-1)
+		{	temp = temp.next;
+			counter++;
+		}
+		insert.next = temp.next;
+		temp.next = insert;
+	}
+
+	// insert AFTER a place
+	public void insertAfter(Node insert, int place)
+	{	if(place < 1)
+		{	System.out.println("ERROR - Insertion place out of bounds!");
+			return;
+		}
+		if(place == 1)
+		{	insert.next = start;
+			start = insert;
+			return;
+		}
+		int counter = 1;
+		Node temp = start;
+		while(counter < place)
+		{	temp = temp.next;
+			counter++;
+		}
+		insert.next = temp.next;
+		temp.next = insert;
+	}
+
+	// more typical IB question than adding a counter to the class
+	public int size()
+	{
+		Node temp = start;
+		int size = 0;
+		while( temp != null )
+		{	size++;
+			temp = temp.next;
+		}
+		return size;
+	}
+
+	public void printLL()	// NOT a built-in
+	{
+		Node temp = start;
+		System.out.print("Start -> ");
+		while( temp != null )
+		{	System.out.print( temp.data + " -> " );
+			temp = temp.next;
+		}
+		System.out.println("null");
 	}
 
 }
