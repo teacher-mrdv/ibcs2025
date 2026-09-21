@@ -1,0 +1,72 @@
+1
+Albert
++01 1324 9873
+4
+Yes
+No
+2
+Alan
++44 9874 4563
+4
+Yes
+Yes
+3
+Bruce
++65 1234 5678
+4
+Yes
+No
+4
+Mary
++65 9876 4561
+1
+No
+No
+5
+James
++65 7894 6541
+1
+No
+No
+6
+John
++65 8523 7419
+2
+No
+No
+7
+Cole
++65 8787 6541
+2
+No
+No
+8
+Kevin
++65 2121 6547
+4
+Yes
+Yes
+9
+Clara
++65 7474 9856
+3
+No
+Yes
+10
+Cain
++65 9789 5641
+3
+No
+Yes
+11
+Dean
++65 4646 4444
+3
+No
+No
+12
+Delete
+
+3
+No
+No
