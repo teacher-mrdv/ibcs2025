@@ -51,18 +51,22 @@ public class SortingAlgos
 
 	public static void bubbleSort(int[] array)
 	{	int comparisons = 0;
-		int len = array.length;
-		for(int i = 0; i < len-1; i++)
-		{	for(int j = 0; j < len-1-i; j++)
-			{	if( array[j] > array[j + 1])
-				{	comparisons++;
+		int endIndex = array.length-1;
+		boolean swapped;
+		do
+		{	swapped = false;
+			for(int j = 0; j < endIndex-1; j++)
+			{	comparisons++;
+				if( array[j] > array[j + 1])
+				{	swapped = true;
 					int temp = array[j];
 					array[j] = array[j + 1];
 					array[j + 1] = temp;
 					System.out.print("\t>>> ");	printArray(array); // traces the array
 				}
 			}
-		}
+			endIndex--;
+		}  while(swapped);
 		System.out.println("\tComparisons: " + comparisons);
 	}
 
@@ -86,7 +90,8 @@ public class SortingAlgos
 
 	public static void main (String[] args)
 	{
-		int[] original  = { 9, 1, 3, 7, 5, 0 };
+		//int[] original  = { 9, 1, 3, 7, 5, 0 };
+		int[] original  = { 1,2,3,4,5,6,7,8,9 };
 		int[] selection = clone(original);
 		int[] bubble = clone(original);
 		int[] insert = clone(original);
